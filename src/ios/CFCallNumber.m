@@ -19,17 +19,22 @@
             number =  [NSString stringWithFormat:@"tel:%@", number];
         }
 
-        // run in mainthread as below 
+        // run in mainthread as below
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSURL *url = [NSURL URLWithString:number];
             if(![CFCallNumber available]) {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"NoFeatureCallSupported"];
             }
-            else if(![[UIApplication sharedApplication] openURL:[NSURL URLWithString:number]]) {
-                // missing phone number
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"CouldNotCallPhoneNumber"];
-            } else {
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-            }
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+                if (!success) {
+                    // missing phone number
+                    NSLog(@"Failed to open URL: %@", number);
+                    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"CouldNotCallPhoneNumber"];
+                }
+                else {
+                    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+                }
+            }];
         });
         // return result
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];

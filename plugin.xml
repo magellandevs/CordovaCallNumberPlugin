@@ -8,9 +8,7 @@
   <description>Call Number from Cordova Application</description>
 
   <name>Cordova Call Number Plugin</name>
-  <author>Rohith Varanasi, Nishil Shah</author>
-  
-  
+
   <repo>https://github.com/ssfglobalsolutions/CordovaCallNumberPlugin.git</repo>
   <issue>https://github.com/ssfglobalsolutions/CordovaCallNumberPlugin/issues</issue>
 

@@ -9,8 +9,8 @@
 
   <name>Cordova Call Number Plugin</name>
 
-  <repo>https://github.com/ssfglobalsolutions/CordovaCallNumberPlugin.git</repo>
-  <issue>https://github.com/ssfglobalsolutions/CordovaCallNumberPlugin/issues</issue>
+  <repo>https://github.com/magellandevs/CordovaCallNumberPlugin.git</repo>
+  <issue>https://github.com/magellandevs/CordovaCallNumberPlugin/issues</issue>
 
   <license>Apache 2.0</license>
   <keywords>cordova,call,dialer,phonegap</keywords>
